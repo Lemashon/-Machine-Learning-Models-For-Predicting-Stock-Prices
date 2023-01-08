@@ -54,6 +54,11 @@ from sklearn.metrics import mean_squared_error
 rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 print(f'RMSE: {rmse:.2f}')
 
+# Calculate R squared
+from sklearn.metrics import r2_score
+r2 = r2_score(y_test, y_pred)
+print(f'R squared: {r2:.2f}')
+
 # Visualize the results
 plt.scatter(X_test, y_test, label='Actual')
 plt.plot(X_test, y_pred, label='Predicted', color='red')
