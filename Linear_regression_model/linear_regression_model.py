@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import yfinance as yf
 import datetime
+import os
 import matplotlib.pyplot as plt
 
 
@@ -17,6 +18,11 @@ updated_stock_data = new_stock_data.rename(columns={'index':'Date', 'Close':'Clo
 updated_stock_data  = updated_stock_data.dropna()
 updated_stock_data['Close'] = updated_stock_data['Close'].astype(float) 
 updated_stock_data  = updated_stock_data.sort_values('Date')
+
+#Store the data in a csv format
+directory = 'Linear_regression_model'
+filepath = os.path.join(directory, 'amazon_stock_data.csv')
+updated_stock_data.to_csv("amazon_stock_data.csv", index=False)
 
 # Split the data into input (X) and output (y) variables
 X = updated_stock_data['Date'].values.reshape(-1, 1) 
